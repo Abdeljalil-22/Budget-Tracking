@@ -1,23 +1,25 @@
-import { Component } from '@angular/core';
-import { FormControl,FormGroup } from '@angular/forms';
+import { CUSTOM_ELEMENTS_SCHEMA, Component } from '@angular/core';
+import { FormControl,FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { IFrom } from '../intrfa/ifrom';
 
 @Component({
   selector: 'app-form',
   // standalone: true,
-  //standalone: true,
-  //  imports: 
+  standalone: true,
+   imports:[ReactiveFormsModule] ,
   templateUrl: './form.component.html',
-  styleUrl: './form.component.sass'
+  styleUrl: './form.component.sass',
+  schemas:[CUSTOM_ELEMENTS_SCHEMA]
 })
 export class FormComponent {
   //  budget: string = "";
   // public label:any;
 from =new FormGroup({
-  budget: new FormControl(""),
-  label:new FormControl("")
+  budget: new FormControl(0,Validators.required),
+  label:new FormControl("",Validators.required)
 })
- AddBudget(){
-    console.log("test")
+ AddBudget(item:IFrom){
+    console.log("test",item)
   }
 
 }

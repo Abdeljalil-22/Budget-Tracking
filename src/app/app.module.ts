@@ -7,15 +7,16 @@ import { FormComponent } from './form/form.component';
 import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [AppComponent,FormComponent],
+  declarations: [AppComponent],
   imports: [
     CommonModule,
     BrowserModule,
-    ReactiveFormsModule
+    FormComponent
+    
   //  AppRoutingModule
   ],
   providers: [
-    FormComponent
+    
   ],
   bootstrap:[AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]

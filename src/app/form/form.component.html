@@ -1,10 +1,19 @@
 
-<form [formGroup]="from" (ngSubmit)="AddBudget()">
+<form [formGroup]="from" (ngSubmit)="AddBudget(from.value)">
 
 
 
-<fluent-text-field id="budget" name="budget" formControlName="budget" appearance="outline" type="number" placeholder="budget"  >budget</fluent-text-field>
-<fluent-text-field  appearance="outline"  placeholder="label">label</fluent-text-field>
+<fluent-text-field ngDefaultControl  
+formControlName="budget" 
+appearance="outline"  
+type="number"
+ >budget</fluent-text-field>
+<fluent-text-field 
+ ngDefaultControl 
+appearance="outline"  
+formControlName="label" 
+placeholder="label"
+>label</fluent-text-field>
 <br/>
 <fluent-button  type="submit" appearance="accent">
     Add
