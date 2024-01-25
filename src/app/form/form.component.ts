@@ -1,4 +1,4 @@
-import { CUSTOM_ELEMENTS_SCHEMA, Component } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, Component , Output, EventEmitter} from '@angular/core';
 import { FormControl,FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { IFrom } from '../intrfa/ifrom';
 
@@ -11,7 +11,9 @@ import { IFrom } from '../intrfa/ifrom';
   styleUrl: './form.component.sass',
   schemas:[CUSTOM_ELEMENTS_SCHEMA]
 })
+
 export class FormComponent {
+  @Output() fromListEvent = new EventEmitter<IFrom>();
   //  budget: string = "";
   // public label:any;
 from =new FormGroup({
@@ -20,6 +22,7 @@ from =new FormGroup({
 })
  AddBudget(item:IFrom){
     console.log("test",item)
+    this.fromListEvent.emit(item)
   }
 
 }

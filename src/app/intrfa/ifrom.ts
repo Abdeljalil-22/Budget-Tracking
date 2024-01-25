@@ -1,4 +1,4 @@
 export interface IFrom {
-    budget?:number ;
-    lable?:string ;
+    budget?: number | null ;
+    lable?:string | null;
 }

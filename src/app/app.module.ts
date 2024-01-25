@@ -5,13 +5,17 @@ import { AppComponent } from './app.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormComponent } from './form/form.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
     CommonModule,
     BrowserModule,
-    FormComponent
+    FormComponent,
+    DashboardComponent,
+    BrowserAnimationsModule
     
   //  AppRoutingModule
   ],
@@ -21,4 +25,6 @@ import { ReactiveFormsModule } from '@angular/forms';
   bootstrap:[AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
-export class AppModule { }
+export class AppModule {
+ // constructor( refDashboardComponent: DashboardComponent) {}
+ }

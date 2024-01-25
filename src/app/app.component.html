@@ -1,3 +1,7 @@
 
 
-  <app-form></app-form>
+  <app-form (fromListEvent)="addItem($event)"></app-form>
+
+
+
+  <app-dashboard [items]="items"></app-dashboard>
