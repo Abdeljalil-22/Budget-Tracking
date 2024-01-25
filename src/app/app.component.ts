@@ -5,12 +5,6 @@ import { FormPopUpComponent } from './form-pop-up/form-pop-up.component';
 // import { RouterOutlet } from '@angular/router';
 import {
   MatDialog,
-  MAT_DIALOG_DATA,
-  MatDialogRef,
-  MatDialogTitle,
-  MatDialogContent,
-  MatDialogActions,
-  MatDialogClose,
 } from '@angular/material/dialog';
 
 @Component({
@@ -22,24 +16,31 @@ import {
 })
 
 export class AppComponent {
-onNoClick() {
-throw new Error('Method not implemented.');
-}
-  constructor(public dialog: MatDialog) {}
-openDialog(): void {
-  const dialogRef = this.dialog.open(FormPopUpComponent);
-}
   title = 'Budget-Tracking';
 
-  items:IFrom[] = [];
+  constructor(public dialog: MatDialog) { }
+
+  openDialog(): void {
+
+    const dialogRef = this.dialog.open(FormPopUpComponent, { data: {} });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed', result);
+      //   this.animal = result;
+      this.addItem(result)
+    });
+  }
+
+
+  items: IFrom[] = [];
   addItem(newItem: IFrom) {
     this.items.push(newItem);
-    console.log("app",this.items);
+    console.log("app", this.items);
     //this.refDashboardComponent
   }
-  newCopie(){
+  newCopie() {
     return [...this.items]
   }
 
-  
+
 }

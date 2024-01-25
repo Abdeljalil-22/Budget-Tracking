@@ -35,7 +35,7 @@ export class DashboardComponent implements OnInit ,OnChanges {
   // }
  
   
-  displayedColumns: string[] = ['budget', 'lable' ];
+  displayedColumns: string[] = ['budget', 'label',"Date","category" ];
   // dataSource:IFrom[]=[{budget:23, lable:"yyty"}]
   // DashboardComponent(){
   // //   document.getElementById("defaultGrid"). = [
