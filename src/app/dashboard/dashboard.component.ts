@@ -1,4 +1,4 @@
-import { CUSTOM_ELEMENTS_SCHEMA, Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, Component, DoCheck, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { IFrom } from '../intrfa/ifrom';
 // import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import {MatTableModule} from '@angular/material/table';
@@ -13,6 +13,7 @@ import {MatTableModule} from '@angular/material/table';
 
 export class DashboardComponent implements OnInit ,OnChanges {
   @Input("items") items!:IFrom[];
+  dataSource!:IFrom[];
  
   ngOnInit(): void {
   
@@ -21,14 +22,21 @@ export class DashboardComponent implements OnInit ,OnChanges {
  // @Input() items: TodoItem; 
 }
   ngOnChanges(changes: SimpleChanges) {
-    console.log("change",this.items,changes['items'])
+    // console.log("change",this.items,changes['items'])
+    
     this.dataSource = this.items
 
   }
+
+  // ngDoCheck() {
+  //   console.log('check');
+  //   console.log("check::",this.items);
+  //   this.dataSource .concat( this.items)
+  // }
  
   
   displayedColumns: string[] = ['budget', 'lable' ];
-  dataSource:IFrom[]=[{budget:23, lable:"yyty"}]
+  // dataSource:IFrom[]=[{budget:23, lable:"yyty"}]
   // DashboardComponent(){
   // //   document.getElementById("defaultGrid"). = [
   // //     { item1: "value 1-1", item2: "value 2-1" },

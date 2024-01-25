@@ -1,7 +1,9 @@
 
 
-  <app-form (fromListEvent)="addItem($event)"></app-form>
+  <!-- <app-form (fromListEvent)="addItem($event)"></app-form> -->
+ 
+ 
 
+<button  mat-raised-button color="primary" (click)="openDialog()">Add new</button>
 
-
-  <app-dashboard [items]="items"></app-dashboard>
+  <app-dashboard [items]="newCopie()"></app-dashboard>
