@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IFrom } from './intrfa/ifrom';
+import { IFrom } from './Interface/ifrom';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { FormPopUpComponent } from './form-pop-up/form-pop-up.component';
 // import { RouterOutlet } from '@angular/router';

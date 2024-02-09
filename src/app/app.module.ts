@@ -8,6 +8,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatButtonModule} from '@angular/material/button';
+import {MatToolbarModule} from '@angular/material/toolbar';
 
 @NgModule({
   declarations: [AppComponent],
@@ -17,7 +18,8 @@ import {MatButtonModule} from '@angular/material/button';
     FormComponent,
     DashboardComponent,
     BrowserAnimationsModule,
-    MatButtonModule
+    MatButtonModule,
+    MatToolbarModule
     
   //  AppRoutingModule
   ],

@@ -1,26 +1,45 @@
-<h1 mat-dialog-title>Add new item </h1>
+<h1 mat-dialog-title>Add new item</h1>
 <div mat-dialog-content>
-  <form [formGroup]="from" (ngSubmit)="AddBudget(from.value)">
+  <form [formGroup]="budgetFrom" (ngSubmit)="AddBudget(budgetFrom.value)">
+
     <mat-form-field>
-        <mat-label>budget</mat-label>
-        <input  matInput type="number" formControlName="budget" >
-      </mat-form-field>
-      <mat-form-field>
-        <mat-label>label</mat-label>
-        <input matInput  formControlName="label"  >
-      </mat-form-field>
-      <mat-form-field>
-        <mat-label>Date</mat-label>
-        <input matInput  formControlName="Date"  >
-      </mat-form-field>
-      <mat-form-field>
-        <mat-label>category</mat-label>
-        <input matInput [value]="DataNow" formControlName="category" >
-      </mat-form-field>
-     </form>
-  
+      <mat-label>budget</mat-label>
+      <input matInput type="number" formControlName="budget" required />
+      <!-- @if(budget.invalid ){ -->
+        <mat-error> errors</mat-error>
+
+      <!-- } -->
+      
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>label</mat-label>
+      <input matInput formControlName="label" />
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Date</mat-label>
+      <input matInput formControlName="Date" />
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>category</mat-label>
+      <input matInput [value]="DataNow" formControlName="category" />
+    </mat-form-field>
+
+  </form>
 </div>
 <div mat-dialog-actions>
   <button mat-button (click)="onNoClick()">Cancel</button>
-  <button mat-button   type="submit"  [mat-dialog-close]="from.value" cdkFocusInitial>Ok</button>
+  <button
+    mat-button
+    type="submit"
+    [disabled]="budgetFrom.invalid"
+     
+      [mat-dialog-close]="budgetFrom.value"
+    
+    cdkFocusInitial
+  >
+    Ok
+  </button>
 </div>

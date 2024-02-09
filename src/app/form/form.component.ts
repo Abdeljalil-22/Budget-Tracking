@@ -1,6 +1,6 @@
 import { CUSTOM_ELEMENTS_SCHEMA, Component , Output, EventEmitter} from '@angular/core';
 import { FormControl,FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { IFrom } from '../intrfa/ifrom';
+import { IFrom } from '../Interface/ifrom';
 
 @Component({
   selector: 'app-form',

@@ -1,5 +1,5 @@
 import { CUSTOM_ELEMENTS_SCHEMA, Component, DoCheck, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
-import { IFrom } from '../intrfa/ifrom';
+import { IFrom } from '../Interface/ifrom';
 // import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import {MatTableModule} from '@angular/material/table';
 @Component({
@@ -14,6 +14,7 @@ import {MatTableModule} from '@angular/material/table';
 export class DashboardComponent implements OnInit ,OnChanges {
   @Input("items") items!:IFrom[];
   dataSource!:IFrom[];
+  Total:number =0
  
   ngOnInit(): void {
   
@@ -25,6 +26,10 @@ export class DashboardComponent implements OnInit ,OnChanges {
     // console.log("change",this.items,changes['items'])
     
     this.dataSource = this.items
+
+    this.Total = this.items.reduce((accumulator, object) => {
+      return accumulator + Number(object.budget);
+    }, 0);
 
   }
 
