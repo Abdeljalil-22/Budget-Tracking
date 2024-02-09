@@ -22,5 +22,5 @@
 </div>
 <div mat-dialog-actions>
   <button mat-button (click)="onNoClick()">Cancel</button>
-  <button mat-button   type="submit" cdkFocusInitial>Ok</button>
+  <button mat-button   type="submit"  [mat-dialog-close]="from.value" cdkFocusInitial>Ok</button>
 </div>
