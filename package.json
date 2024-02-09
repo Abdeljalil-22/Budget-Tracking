@@ -22,6 +22,7 @@
     "@angular/router": "^17.1.0",
     "@fluentui/web-components": "^2.5.16",
     "@microsoft/fast-element": "^1.12.0",
+    "chart.js": "^4.4.1",
     "lodash-es": "^4.17.21",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",

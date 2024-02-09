@@ -9,6 +9,15 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatButtonModule} from '@angular/material/button';
 import {MatToolbarModule} from '@angular/material/toolbar';
+import { ChartComponent } from './chart/chart.component';
+import {MatMenuModule} from '@angular/material/menu';
+import {MatIconModule} from '@angular/material/icon';
+import { AppRoutingModule } from './app-routing.module';
+// import { 
+//   MatIconModule, 
+//   MatMenuModule
+//   // MatToolbarModule,
+// } from '@angular/material';
 
 @NgModule({
   declarations: [AppComponent],
@@ -17,9 +26,13 @@ import {MatToolbarModule} from '@angular/material/toolbar';
     BrowserModule,
     FormComponent,
     DashboardComponent,
+    ChartComponent,
     BrowserAnimationsModule,
     MatButtonModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatIconModule,
+    MatMenuModule,
+    AppRoutingModule
     
   //  AppRoutingModule
   ],

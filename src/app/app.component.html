@@ -2,10 +2,45 @@
 
   <!-- <app-form (fromListEvent)="addItem($event)"></app-form> -->
  
-  <mat-toolbar>
+  <!-- <mat-toolbar>
+    <button mat-icon-button   aria-label=" icon-button with menu icon">
+      <mat-icon>menu</mat-icon>
+    </button>
     <span>My Budget Tracking</span>
+  </mat-toolbar> -->
+
+
+  <mat-toolbar color="primary">
+    <span class="fill-remaining-space">
+      <button mat-icon-button [matMenuTriggerFor]="menu" #menuTrigger="matMenuTrigger" (mouseover)="menuTrigger.openMenu()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu" [overlapTrigger]="false">
+      <span (mouseleave)="menuTrigger.closeMenu()">
+        <button mat-menu-item>
+          <mat-icon>home</mat-icon>
+          <span>Home</span>
+    </button>
+    <button mat-menu-item>
+          <mat-icon>chart</mat-icon>
+          <span>chart</span>
+          <a routerLink="/chart">chart</a>
+        </button>
+    
+    <!-- <button mat-menu-item>
+          <mat-icon>exit_to_app</mat-icon>
+          <span>Logout</span>
+        </button> -->
+    </span>
+    </mat-menu>
+    </span>
+    <span class="fill-remaining-space">My Budget Tracking app</span>
   </mat-toolbar>
+
 
 <button  mat-raised-button color="primary" (click)="openDialog()">Add new</button>
 
   <app-dashboard [items]="newCopie()"></app-dashboard>
+
+
+  <app-chart></app-chart>
