@@ -19,12 +19,13 @@
       <span (mouseleave)="menuTrigger.closeMenu()">
         <button mat-menu-item>
           <mat-icon>home</mat-icon>
-          <span>Home</span>
+          <!-- <span>Home</span> -->
+          <a routerLink="/">Home</a>
     </button>
     <button mat-menu-item>
           <mat-icon>chart</mat-icon>
-          <span>chart</span>
-          <a routerLink="/chart">chart</a>
+         <!-- // <span>chart</span> -->
+          <a routerLink="/Chart">chart</a>
         </button>
     
     <!-- <button mat-menu-item>
@@ -38,9 +39,10 @@
   </mat-toolbar>
 
 
-<button  mat-raised-button color="primary" (click)="openDialog()">Add new</button>
+<!-- <button  mat-raised-button color="primary" (click)="openDialog()">Add new</button>
 
-  <app-dashboard [items]="newCopie()"></app-dashboard>
+  <app-dashboard [items]="newCopie()"></app-dashboard> -->
 
 
-  <app-chart></app-chart>
+  <!-- <app-chart></app-chart> -->
+  <router-outlet></router-outlet>
