@@ -1,4 +1,9 @@
-<p>home works!</p>
-<!-- <button  mat-raised-button color="primary" (click)="openDialog()">Add new</button>
 
-  <app-dashboard [items]="newCopie()"></app-dashboard> -->
+<div class="devHome">
+
+
+<button  mat-raised-button color="primary" (click)="openDialog()">Add new</button>
+
+  <app-dashboard [callbackFunction]="callbackOpenDialog" [callbackItemDelete]="callbackItemDelete" [items]="newCopie()"></app-dashboard>
+
+</div>

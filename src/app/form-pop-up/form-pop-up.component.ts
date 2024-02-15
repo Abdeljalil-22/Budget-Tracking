@@ -43,12 +43,15 @@ export class FormPopUpComponent {
     // private _snackBar: MatSnackBar
   ) {
     // data=this.item
+    console.log("this.data.budget",this.data)
   }
  
   budgetFrom =new FormGroup({
-    budget: new FormControl(0,Validators.required),
-    label:new FormControl("",Validators.required),
-    category:new FormControl("",Validators.required),
+    id: new FormControl(this.data.id),
+
+    budget: new FormControl(this.data.budget?this.data.budget:11,Validators.required),
+    label:new FormControl(this.data.label?this.data.label:"tq",Validators.required),
+    category:new FormControl(this.data.category?this.data.category :"t1",Validators.required),
 
     Date:new FormControl(this.DataNow,Validators.required)
     
@@ -61,23 +64,23 @@ export class FormPopUpComponent {
   //   this._snackBar.open(message, action);
   // }
   
-  AddBudget(item:IFrom){
-    console.log("test",item)
-  //  this._snackBar.open("Item added", "ok");
+  // AddBudget(item:IFrom){
+  //  // console.log("test",item)
+  // //  this._snackBar.open("Item added", "ok");
 
     
-   // this.dialogRef.close(item)
-    //return item
-    // MatDialogClose= 
-    // this.item= item1
-    // console.log(this.data)
-    // this.dialogRef.beforeClosed().subscribe(()=>{
-    //   return item1
-    // })
+  //  // this.dialogRef.close(item)
+  //   //return item
+  //   // MatDialogClose= 
+  //   // this.item= item1
+  //   // console.log(this.data)
+  //   // this.dialogRef.beforeClosed().subscribe(()=>{
+  //   //   return item1
+  //   // })
     
-    // this.data =item1
-    // this.fromListEvent.emit(item)
-  }
+  //   // this.data =item1
+  //   // this.fromListEvent.emit(item)
+  // }
   onNoClick(): void {
     this.dialogRef.close();
   }
