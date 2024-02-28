@@ -13,6 +13,12 @@ import { ChartComponent } from './chart/chart.component';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatIconModule} from '@angular/material/icon';
 import { AppRoutingModule } from './app-routing.module';
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
+import { AngularFireStorageModule } from '@angular/fire/compat/storage';
+import { environment } from '../environments/environment';
 // import { 
 //   MatIconModule, 
 //   MatMenuModule
@@ -32,7 +38,12 @@ import { AppRoutingModule } from './app-routing.module';
     MatToolbarModule,
     MatIconModule,
     MatMenuModule,
-    AppRoutingModule
+    AppRoutingModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireAuthModule,
+    AngularFirestoreModule,
+    AngularFireDatabaseModule,
+    AngularFireStorageModule
     
   //  AppRoutingModule
   ],
