@@ -7,78 +7,81 @@ import {MatCardModule} from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialog } from '@angular/material/dialog';
 import { FormPopUpComponent } from '../form-pop-up/form-pop-up.component';
+import { DataService } from '../services/store/store.service';
 
 @Component({
   selector: 'app-dashboard',
-  standalone: true,
-  imports: [MatTableModule ,
-    MatPaginatorModule,
-    MatCardModule,
-    MatButtonModule],
+  // standalone: true,
+  // imports: [MatTableModule ,
+  //   MatPaginatorModule,
+  //   MatCardModule,
+  //   MatButtonModule],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.sass',
-  schemas:[CUSTOM_ELEMENTS_SCHEMA]
+  // schemas:[CUSTOM_ELEMENTS_SCHEMA]
 })
 
-export class DashboardComponent  implements AfterViewInit, OnInit ,OnChanges {
-  @Input() callbackFunction!: ((args: any) => void) ;
-  @Input() callbackItemDelete!: ((args: any) => void) ;
+export class DashboardComponent  implements  OnInit ,OnChanges {
+  dataSource!:IFrom[];
+  Total:number =0
+  // @Input() callbackFunction!: ((args: any) => void) ;
+  // @Input() callbackItemDelete!: ((args: any) => void) ;
 
 
-  constructor(public dialog: MatDialog) { }
+  constructor(public dialog: MatDialog,private dataService: DataService) { 
+    
+  }
 
 getItemDelete(item: IFrom) {
   console.log("getItemDelete",item)
-  this.callbackItemDelete(item.id)
+  this.dataService.deleteBudget(item.key)
+
+  // this.callbackItemDelete(item.id)
 //throw new Error('Method not implemented.');
 }
 getItemEdit(item: IFrom) {
 
   const dialogRef = this.dialog.open(FormPopUpComponent, { data: item});
 
-    dialogRef.afterClosed().subscribe(result => {
-      // console.log('The dialog was closed', result);
+    dialogRef.afterClosed().subscribe( (result) => {
+      console.log('getItemEdit closed', result);
+      
+      this.dataService.getBudget(result.id).subscribe(i=>console.log("getBudget(result.id)",i))
       //   this.animal = result;
      // this.addItem(result)
-  this.callbackFunction(result)
+     this.dataService.updateBudget(result.id,result)
+    //  .then(i=>console.log(i))
+     .catch(e=>console.log(e))
+  // this.callbackFunction(result)
 
     });
  // console.log("getItemEdit",item)
 //throw new Error('Method not implemented.');
 }
 
-  @Input("items") items!:IFrom[];
-  dataSource!:IFrom[];
-  Total:number =0
-  //@ViewChild(MatPaginator) paginator: MatPaginator;
+  // @Input("items") items!:IFrom[];
+  // private items!:IFrom[];
+
  
   ngOnInit(): void {
   
-   // console.log("constructor",this.items)
-          this.dataSource = this.items;
- // @Input() items: TodoItem; 
+    this.dataService.getBudgets().subscribe(val=>this.getitems(val));
+
 }
   ngOnChanges(changes: SimpleChanges) {
-    // console.log("change",this.items,changes['items'])
-    
-    this.dataSource = this.items
+     console.log("ngOnChanges")
 
-    this.Total = this.items.reduce((accumulator, object) => {
-      return accumulator + Number(object.budget);
-    }, 0);
 
   }
  
+getitems(items:IFrom[]){
+  console.log(items)
+  this.dataSource =items;
+  this.Total = items.reduce((accumulator, object) => {
+    return accumulator + Number(object.budget);
+  }, 0);
+}
 
-  ngAfterViewInit() {
-  //  this.dataSource.paginator = this.paginator;
-  }
-
-  // ngDoCheck() {
-  //   console.log('check');
-  //   console.log("check::",this.items);
-  //   this.dataSource .concat( this.items)
-  // }
  
   
   displayedColumns: string[] = ['budget', 'label',"Date","category" ,"actions"];

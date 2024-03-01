@@ -11,8 +11,16 @@ export class DataService {
   constructor(private db: AngularFireDatabase) {}
   // Get all budgets
   getBudgets(): Observable<any[]> {
-    return this.db.list('/budgets').valueChanges().pipe(
-      map((budgets: any[]) => budgets.map(budget => ({ key: budget.key, ...budget })))
+    return this.db.list('/budgets').snapshotChanges().pipe(
+      map((budgets: any[]) => {
+        //console.log("budgets",budgets)
+        return budgets.map(budget => {
+        //  console.log("budget",budget)
+          return({id:budget.payload.key, key: budget.payload.key, ...budget.payload.val() })
+          
+          
+        })}
+        )
     );
   }
 

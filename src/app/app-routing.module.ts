@@ -5,13 +5,18 @@ import { ChartComponent } from './chart/chart.component';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
+import { SignupComponent } from './signup/signup.component';
 
 
 // ChartComponent
 const routes: Routes = [
   { path: '', component: HomeComponent },
+  { path: 'app', component: AppComponent },
   { path: 'Chart', component: ChartComponent },
-  { path: 'login', component: LoginComponent }
+  { path: 'login', component: LoginComponent },
+  { path: 'Signup', component: SignupComponent }
+
+  
 
   
 

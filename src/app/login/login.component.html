@@ -24,16 +24,16 @@
       <mat-card-title>Login</mat-card-title>
     </mat-card-header>
     <mat-card-content>
-      <form class="login-form">
+      <form class="login-form" [formGroup]="loginFrom" (submit)="onClickLogin()" >
         <mat-form-field appearance="fill" class="full-width">
           <mat-label>Email</mat-label>
-          <input matInput type="email" required>
+          <input matInput type="email" formControlName="email" required>
         </mat-form-field>
         <mat-form-field appearance="fill" class="full-width">
           <mat-label>Password</mat-label>
-          <input matInput type="password"  required>
+          <input matInput type="password"  formControlName ="password" required>
         </mat-form-field>
-        <button mat-raised-button color="primary" class="login-button" (click)="login()">Login</button>
+        <button type="submit" mat-raised-button color="primary" class="login-button" >Login</button>
       </form>
     </mat-card-content>
   </mat-card>

@@ -4,7 +4,7 @@ import { AppComponent } from './app.component';
 
 import { BrowserModule } from '@angular/platform-browser';
 // import { FormComponent } from './form/form.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatButtonModule} from '@angular/material/button';
@@ -19,6 +19,14 @@ import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { environment } from '../environments/environment';
+import { HomeComponent } from './home/home.component';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatCardModule } from '@angular/material/card';
+import { MatDialogActions, MatDialogClose, MatDialogContent, MatDialogTitle } from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { FormPopUpComponent } from './form-pop-up/form-pop-up.component';
 // import { 
 //   MatIconModule, 
 //   MatMenuModule
@@ -26,13 +34,13 @@ import { environment } from '../environments/environment';
 // } from '@angular/material';
 
 @NgModule({
-  declarations: [AppComponent],
+    
+    declarations: [AppComponent,DashboardComponent,HomeComponent,ChartComponent,FormPopUpComponent],
   imports: [
     CommonModule,
     BrowserModule,
     // FormComponent,
-    DashboardComponent,
-    ChartComponent,
+    MatTableModule,
     BrowserAnimationsModule,
     MatButtonModule,
     MatToolbarModule,
@@ -43,8 +51,22 @@ import { environment } from '../environments/environment';
     AngularFireAuthModule,
     AngularFirestoreModule,
     AngularFireDatabaseModule,
-    AngularFireStorageModule
-    
+    AngularFireStorageModule,
+    // MatTableModule ,
+    // MatPaginatorModule,
+    // MatCardModule,
+    MatButtonModule,
+    MatPaginatorModule,
+     MatCardModule,
+     MatDialogTitle,
+    MatDialogContent,
+    MatDialogActions,
+    MatDialogClose,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatInputModule,
+    FormsModule,
+    ReactiveFormsModule,
   //  AppRoutingModule
   ],
   providers: [

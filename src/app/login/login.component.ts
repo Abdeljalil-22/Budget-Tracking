@@ -4,13 +4,14 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
 
 @Component({
   selector: 'app-login',
   standalone: true,
   imports: [MatFormFieldModule,
+    ReactiveFormsModule ,
     MatCardModule ,
     MatInputModule,
     MatButtonModule,
@@ -21,17 +22,31 @@ import { MatCardModule } from '@angular/material/card';
 })
 export class LoginComponent implements OnInit {
 
-  email = '';
-  password = '';
+  // email = '';
+  // password = '';
+  // data!:{email:string,password:string}
 
   constructor(private authService: AuthService) {}
 
+
+  loginFrom =new FormGroup({
+    email: new FormControl("",[Validators.required ,Validators.email] ),
+
+    password: new FormControl("",[Validators.required,Validators.min(6)]),
+  
+    
+  })
+
   ngOnInit() { }
 
-  login() {
-    this.authService.login(this.email, this.password)
-      .then(() => {
+  onClickLogin() {
+    let email:any = this.loginFrom.controls.email.value
+    let password:any =this.loginFrom.controls.password.value
+    console.log("onClickLogin()")
+    this.authService.login(email , password)
+      .then((item) => {
         // Handle successful login (e.g., navigate to another page)
+        console.log(item)
       })
       .catch(error => {
         // Handle login errors

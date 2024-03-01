@@ -1,5 +1,6 @@
 export interface IFrom {
-    id:number
+    key:string;
+    id:string
     budget?: number | null ;
     label?:string | null;
     Date?:string | null;

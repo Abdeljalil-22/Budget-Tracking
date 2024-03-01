@@ -18,19 +18,19 @@ import { FormControl,FormGroup, ReactiveFormsModule, Validators } from '@angular
 import { from } from 'rxjs';
 @Component({
   selector: 'app-form-pop-up',
-  standalone: true,
-  imports: [
-    MatDialogTitle,
-    MatDialogContent,
-    MatDialogActions,
-    MatDialogClose,
-    MatButtonModule,
-    MatFormFieldModule,
-    MatInputModule,
-    FormsModule,
-    ReactiveFormsModule,
-    // MatSnackBar
-  ],
+  // standalone: true,
+  // imports: [
+  //   MatDialogTitle,
+  //   MatDialogContent,
+  //   MatDialogActions,
+  //   MatDialogClose,
+  //   MatButtonModule,
+  //   MatFormFieldModule,
+  //   MatInputModule,
+  //   FormsModule,
+  //   ReactiveFormsModule,
+  //   // MatSnackBar
+  // ],
   templateUrl: './form-pop-up.component.html',
   styleUrl: './form-pop-up.component.sass'
 })
