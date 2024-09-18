@@ -1,0 +1,616 @@
+openapi: 3.0.1
+info:
+  title: Budget_Tracking_BackEnd.Api
+  version: '1.0'
+paths:
+  /api/Auth/register:
+    post:
+      tags:
+        - Auth
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RegisterModel'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/RegisterModel'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/RegisterModel'
+      responses:
+        '200':
+          description: Success
+  /api/Auth/login:
+    post:
+      tags:
+        - Auth
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LoginModel'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/LoginModel'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/LoginModel'
+      responses:
+        '200':
+          description: Success
+  /api/Auth/renew:
+    post:
+      tags:
+        - Auth
+      responses:
+        '200':
+          description: Success
+  /api/Budgets:
+    get:
+      tags:
+        - Budgets
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Budget'
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Budget'
+            text/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Budget'
+    post:
+      tags:
+        - Budgets
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Budget'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/Budget'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/Budget'
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Budget'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Budget'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/Budget'
+  /api/Budgets/{id}:
+    get:
+      tags:
+        - Budgets
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Budget'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Budget'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/Budget'
+    put:
+      tags:
+        - Budgets
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Budget'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/Budget'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/Budget'
+      responses:
+        '200':
+          description: Success
+    delete:
+      tags:
+        - Budgets
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: Success
+  /api/Categories:
+    get:
+      tags:
+        - Categories
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Category'
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Category'
+            text/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Category'
+    post:
+      tags:
+        - Categories
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Category'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/Category'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/Category'
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Category'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Category'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/Category'
+  /api/Categories/{id}:
+    get:
+      tags:
+        - Categories
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Category'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Category'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/Category'
+    put:
+      tags:
+        - Categories
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Category'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/Category'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/Category'
+      responses:
+        '200':
+          description: Success
+    delete:
+      tags:
+        - Categories
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: Success
+  /api/Labels:
+    get:
+      tags:
+        - Labels
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Label'
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Label'
+            text/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Label'
+    post:
+      tags:
+        - Labels
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Label'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/Label'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/Label'
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Label'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Label'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/Label'
+  /api/Labels/{id}:
+    get:
+      tags:
+        - Labels
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Label'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Label'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/Label'
+    put:
+      tags:
+        - Labels
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Label'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/Label'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/Label'
+      responses:
+        '200':
+          description: Success
+    delete:
+      tags:
+        - Labels
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: Success
+  /api/Users:
+    get:
+      tags:
+        - Users
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/User'
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/User'
+            text/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/User'
+    post:
+      tags:
+        - Users
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/User'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/User'
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/User'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/User'
+  /api/Users/{id}:
+    get:
+      tags:
+        - Users
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/User'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/User'
+    put:
+      tags:
+        - Users
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/User'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/User'
+      responses:
+        '200':
+          description: Success
+    delete:
+      tags:
+        - Users
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: Success
+components:
+  schemas:
+    Budget:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+        amount:
+          type: number
+          format: float
+        description:
+          type: string
+          nullable: true
+        label:
+          $ref: '#/components/schemas/Label'
+        category:
+          $ref: '#/components/schemas/Category'
+        date:
+          type: string
+          format: date-time
+          nullable: true
+        createdDate:
+          type: string
+          format: date-time
+        updatedDate:
+          type: string
+          format: date-time
+        userId:
+          type: integer
+          format: int32
+        createdById:
+          type: integer
+          format: int32
+        updatedById:
+          type: integer
+          format: int32
+      additionalProperties: false
+    Category:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+        name:
+          type: string
+          nullable: true
+        description:
+          type: string
+          nullable: true
+      additionalProperties: false
+    Label:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+        name:
+          type: string
+          nullable: true
+        description:
+          type: string
+          nullable: true
+      additionalProperties: false
+    LoginModel:
+      type: object
+      properties:
+        username:
+          type: string
+          nullable: true
+        password:
+          type: string
+          nullable: true
+      additionalProperties: false
+    RegisterModel:
+      type: object
+      properties:
+        username:
+          type: string
+          nullable: true
+        password:
+          type: string
+          nullable: true
+        role:
+          type: string
+          nullable: true
+      additionalProperties: false
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+        userName:
+          type: string
+          nullable: true
+        firstName:
+          type: string
+          nullable: true
+        lastName:
+          type: string
+          nullable: true
+        email:
+          type: string
+          nullable: true
+        password:
+          type: string
+          nullable: true
+        role:
+          type: string
+          nullable: true
+        createdDate:
+          type: string
+          format: date-time
+        updatedDate:
+          type: string
+          format: date-time
+        createdBy:
+          type: integer
+          format: int32
+        updatedBy:
+          type: integer
+          format: int32
+      additionalProperties: false
