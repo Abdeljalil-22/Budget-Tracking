@@ -30,6 +30,7 @@ import { FormPopUpComponent } from './form-pop-up/form-pop-up.component';
 import { ApiModule } from '../app/api-client/api.module';
 import { HttpClientModule } from '@angular/common/http'; 
 import { Configuration } from './api-client';
+import { SignupComponent } from './signup/signup.component';
 // import { 
 //   MatIconModule, 
 //   MatMenuModule
@@ -38,8 +39,9 @@ import { Configuration } from './api-client';
 
 @NgModule({
     
-    declarations: [AppComponent,DashboardComponent,HomeComponent,ChartComponent,FormPopUpComponent],
+    declarations: [AppComponent,DashboardComponent,HomeComponent,ChartComponent,FormPopUpComponent,SignupComponent],
   imports: [
+    FormsModule,
     HttpClientModule,
     ApiModule.forRoot(() => new Configuration()),
     CommonModule,

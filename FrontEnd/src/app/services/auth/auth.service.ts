@@ -1,5 +1,9 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth'; // Import compat version
+// import firebase from 'firebase/compat';
+import { GoogleAuthProvider } from 'firebase/auth'; // Import GoogleAuthProvider from firebase/auth
+
+
 //import { auth } from 'firebase/auth'; // Import for additional methods (optional)
 import { Observable, of } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
@@ -16,6 +20,10 @@ export class AuthService {
     return this.fireAuth.signInWithEmailAndPassword(email, password);
   }
 
+  // logout() {
+  //   return this.fireAuth.signOut(); 
+  // }
+
   // Signup with email and password
   signup(email: string, password: string) {
     return this.fireAuth.createUserWithEmailAndPassword(email, password);
@@ -26,6 +34,12 @@ export class AuthService {
     return this.fireAuth.signOut();
   }
 
+  loginWithGoogle() {
+    return this.fireAuth.signInWithPopup(new GoogleAuthProvider());
+  }
+  getUser() {
+    return this.fireAuth.authState;
+  }
   // Get the currently signed-in user (observable)
   get currentUser(): Observable<any | null> {
     return this.fireAuth.authState.pipe(

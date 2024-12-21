@@ -6,6 +6,8 @@ import { FormPopUpComponent } from './form-pop-up/form-pop-up.component';
 import {
   MatDialog,
 } from '@angular/material/dialog';
+import { AuthService } from './services/auth/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -18,8 +20,17 @@ import {
 export class AppComponent {
   title = 'Budget-Tracking';
 
+  constructor(private authService: AuthService,private router: Router) {}
 
+  logout(){
+    this.authService.signOut().then(() => {
+      this.router.navigate(['/login']);
+      console.error('Logout error', "Logout");
 
+    }).catch(error => {
+      console.error('Logout error', error);
+    });
+  }
 
 
 

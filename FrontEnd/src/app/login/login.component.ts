@@ -6,6 +6,7 @@ import { MatInputModule } from '@angular/material/input';
 import { CommonModule } from '@angular/common';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -26,7 +27,7 @@ export class LoginComponent implements OnInit {
   // password = '';
   // data!:{email:string,password:string}
 
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService,private router: Router) {}
 
 
   loginFrom =new FormGroup({
@@ -45,6 +46,7 @@ export class LoginComponent implements OnInit {
     console.log("onClickLogin()")
     this.authService.login(email , password)
       .then((item) => {
+        this.router.navigate(['/']);
         // Handle successful login (e.g., navigate to another page)
         console.log(item)
       })
@@ -52,5 +54,13 @@ export class LoginComponent implements OnInit {
         // Handle login errors
         console.error(error);
       });
+  }
+
+  loginWithGoogle() {
+    this.authService.loginWithGoogle().then(() => {
+      this.router.navigate(['/']);
+    }).catch(error => {
+      console.error(error);
+    });
   }
 }
