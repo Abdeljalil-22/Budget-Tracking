@@ -63,4 +63,8 @@ export class LoginComponent implements OnInit {
       console.error(error);
     });
   }
+
+  goToSignup() {
+    this.router.navigate(['/signup']);
+  }
 }

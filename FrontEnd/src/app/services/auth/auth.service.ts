@@ -20,11 +20,7 @@ export class AuthService {
     return this.fireAuth.signInWithEmailAndPassword(email, password);
   }
 
-  // logout() {
-  //   return this.fireAuth.signOut(); 
-  // }
 
-  // Signup with email and password
   signup(email: string, password: string) {
     return this.fireAuth.createUserWithEmailAndPassword(email, password);
   }

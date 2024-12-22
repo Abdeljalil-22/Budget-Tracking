@@ -1,0 +1,26 @@
+<div class="chat-container">
+    <h2>Chat Rooms</h2>
+    <mat-form-field class="full-width">
+      <input matInput [(ngModel)]="newRoomName" placeholder="New Room Name">
+    </mat-form-field>
+    <button mat-raised-button color="primary" (click)="createRoom()">Add Room</button>
+  
+    <mat-list>
+      <mat-list-item *ngFor="let room of rooms">
+        <button mat-button (click)="joinRoom(room.key)">{{ room.name }}</button>
+        <button mat-icon-button color="warn" (click)="removeRoom(room.key)">x</button>
+      </mat-list-item>
+    </mat-list>
+  
+    <h3 *ngIf="roomId">Chat Room</h3>
+    <div class="messages" *ngIf="roomId">
+      <div *ngFor="let msg of messages">
+        <b>{{ msg.user }}:</b> {{ msg.text }}
+      </div>
+    </div>
+  
+    <mat-form-field class="full-width" *ngIf="roomId">
+      <input matInput [(ngModel)]="newMessage" placeholder="Type your message">
+    </mat-form-field>
+    <button mat-raised-button color="primary" (click)="sendMessage()" *ngIf="roomId">Send</button>
+  </div>

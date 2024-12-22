@@ -2,6 +2,7 @@ import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AppComponent } from './app.component';
 
+
 import { BrowserModule } from '@angular/platform-browser';
 // import { FormComponent } from './form/form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -31,6 +32,14 @@ import { ApiModule } from '../app/api-client/api.module';
 import { HttpClientModule } from '@angular/common/http'; 
 import { Configuration } from './api-client';
 import { SignupComponent } from './signup/signup.component';
+import { ProfileComponent } from './profile/profile.component';
+import { ToastrModule } from 'ngx-toastr';
+import { provideAnimations } from '@angular/platform-browser/animations';
+
+import { provideToastr } from 'ngx-toastr';
+import { ChatComponent } from './chat/chat.component';
+import { RoomListComponent } from './room-list/room-list.component';
+
 // import { 
 //   MatIconModule, 
 //   MatMenuModule
@@ -39,10 +48,24 @@ import { SignupComponent } from './signup/signup.component';
 
 @NgModule({
     
-    declarations: [AppComponent,DashboardComponent,HomeComponent,ChartComponent,FormPopUpComponent,SignupComponent],
+    declarations: [AppComponent,
+      DashboardComponent,HomeComponent,
+      ChartComponent,FormPopUpComponent,
+      SignupComponent,
+      ProfileComponent,
+      ChatComponent,
+      RoomListComponent
+    ]
+      ,
+      
   imports: [
     FormsModule,
     HttpClientModule,
+    ToastrModule.forRoot({
+      timeOut: 3000, 
+      positionClass: 'toast-top-right', 
+      preventDuplicates: true, 
+    }),
     ApiModule.forRoot(() => new Configuration()),
     CommonModule,
     BrowserModule,
@@ -74,12 +97,16 @@ import { SignupComponent } from './signup/signup.component';
     MatInputModule,
     FormsModule,
     ReactiveFormsModule,
+    // BrowserAnimationsModule
   //  AppRoutingModule
   ],
   providers: [
-    
+
+      provideAnimations(), // required animations providers
+      provideToastr(), // Toastr providers
+
   ],
-  bootstrap:[AppComponent],
+  bootstrap:[AppComponent ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppModule {
